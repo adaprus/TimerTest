@@ -1,7 +1,5 @@
 public class Timer {
-    int second;
-    int minutes;
-    int hours;
+    long second;
 
     void addSeconds(int sec){
 
@@ -11,13 +9,13 @@ public class Timer {
 
     void addMinutes(int min){
 
-        minutes = minutes + min;
+        second = second + 60 * min;
 
     }
 
     void addHours(int ho){
 
-        hours = hours + ho;
+        second = second + 3600 * ho;
     }
 
     void step(){
@@ -28,18 +26,18 @@ public class Timer {
 
     String getTime(){
 
-        hours = hours + minutes/60 + second/3600;
-        minutes = minutes%60 + second/60;
-        second = second%60;
+        long hours = second/3600;
+        long minutes = (second % 3600) / 60;
+        long seconds = second%60;
 
-        String time = "Zmierzony czas: " + hours + "." + minutes + "." + second;
+        String time = "Zmierzony czas: " + hours + "." + minutes + "." + seconds;
 
         return time;
     }
 
     long getSeconds(){
 
-        long seconds = 3600 * hours + 60 * minutes + second;
+        long seconds = second;
 
         return seconds;
     }

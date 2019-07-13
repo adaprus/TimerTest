@@ -5,17 +5,14 @@ public class Timer {
 
     void addSeconds(int sec){
 
-        int secSum = second + sec;
-        second = secSum%60;
-        minutes = minutes + secSum/60;
-        hours = hours + secSum/3600;
+        second = second + sec;
+
     }
 
     void addMinutes(int min){
 
-        int minSum = minutes + min;
-        minutes = minSum%60;
-        hours = hours + minSum/60;
+        minutes = minutes + min;
+
     }
 
     void addHours(int ho){
@@ -25,13 +22,15 @@ public class Timer {
 
     void step(){
 
-        int secSum = second + 1;
-        second = secSum%60;
-        minutes = minutes + secSum/60;
+        second = second + 1;
 
     }
 
     String getTime(){
+
+        hours = hours + minutes/60 + second/3600;
+        minutes = minutes%60 + second/60;
+        second = second%60;
 
         String time = "Zmierzony czas: " + hours + "." + minutes + "." + second;
 
